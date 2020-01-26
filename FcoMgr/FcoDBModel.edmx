@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FcoDBModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="datasource=|DataDirectory|\db\FcoDB.db" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FCO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="FcoNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TotalCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FcoList">
+          <Key>
+            <PropertyRef Name="uniqueFcoNumber" />
+          </Key>
+          <Property Name="uniqueFcoNumber" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MainUAL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="ShippedSystemSerialNo" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="MaintainedSystemSerialNo" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UpgradeCode" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="ModelNumber" Type="varchar" MaxLength="10" />
+          <Property Name="ProcessedDate" Type="datetime" />
+          <Property Name="CompletionStat" Type="int" />
+          <Property Name="CompletionDate" Type="datetime" />
+          <Property Name="FCONo" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="FCORev" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="UpgradeResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="SystemSerialNo" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="UpgradeCode" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="ModelNumber" Type="varchar" MaxLength="20" />
+          <Property Name="CompletionStat" Type="int" />
+        </EntityType>
+        <EntityType Name="Version">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="2147483647" Nullable="false" />
+          <Property Name="TableVersion" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="FcoDBModelStoreContainer">
+          <EntitySet Name="FCO" EntityType="Self.FCO" store:Type="Tables" />
+          <EntitySet Name="FcoList" EntityType="Self.FcoList" store:Type="Tables" />
+          <EntitySet Name="MainUAL" EntityType="Self.MainUAL" store:Type="Tables" />
+          <EntitySet Name="UpgradeResult" EntityType="Self.UpgradeResult" store:Type="Tables" />
+          <EntitySet Name="Version" EntityType="Self.Version" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FcoDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FcoDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Versions" EntityType="FcoDBModel.Version" />
+          <EntitySet Name="UpgradeResults" EntityType="FcoDBModel.UpgradeResult" />
+          <EntitySet Name="MainUALs" EntityType="FcoDBModel.MainUAL" />
+          <EntitySet Name="FcoLists" EntityType="FcoDBModel.FcoList" />
+          <EntitySet Name="FCOes" EntityType="FcoDBModel.FCO" />
+        </EntityContainer>
+        <EntityType Name="Version">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="TableVersion" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UpgradeResult">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="SystemSerialNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="UpgradeCode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ModelNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CompletionStat" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MainUAL">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="ShippedSystemSerialNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="MaintainedSystemSerialNo" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UpgradeCode" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ModelNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ProcessedDate" Type="DateTime" />
+          <Property Name="CompletionStat" Type="Int32" />
+          <Property Name="CompletionDate" Type="DateTime" />
+          <Property Name="FCONo" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="FCORev" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FcoList">
+          <Key>
+            <PropertyRef Name="uniqueFcoNumber" />
+          </Key>
+          <Property Name="uniqueFcoNumber" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="FCO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="FcoNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TotalCount" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FcoDBModelStoreContainer" CdmEntityContainer="FcoDBEntities">
+          <EntitySetMapping Name="Versions">
+            <EntityTypeMapping TypeName="FcoDBModel.Version">
+              <MappingFragment StoreEntitySet="Version">
+                <ScalarProperty Name="TableVersion" ColumnName="TableVersion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UpgradeResults">
+            <EntityTypeMapping TypeName="FcoDBModel.UpgradeResult">
+              <MappingFragment StoreEntitySet="UpgradeResult">
+                <ScalarProperty Name="CompletionStat" ColumnName="CompletionStat" />
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="UpgradeCode" ColumnName="UpgradeCode" />
+                <ScalarProperty Name="SystemSerialNo" ColumnName="SystemSerialNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainUALs">
+            <EntityTypeMapping TypeName="FcoDBModel.MainUAL">
+              <MappingFragment StoreEntitySet="MainUAL">
+                <ScalarProperty Name="FCORev" ColumnName="FCORev" />
+                <ScalarProperty Name="FCONo" ColumnName="FCONo" />
+                <ScalarProperty Name="CompletionDate" ColumnName="CompletionDate" />
+                <ScalarProperty Name="CompletionStat" ColumnName="CompletionStat" />
+                <ScalarProperty Name="ProcessedDate" ColumnName="ProcessedDate" />
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="UpgradeCode" ColumnName="UpgradeCode" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="MaintainedSystemSerialNo" ColumnName="MaintainedSystemSerialNo" />
+                <ScalarProperty Name="ShippedSystemSerialNo" ColumnName="ShippedSystemSerialNo" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FcoLists">
+            <EntityTypeMapping TypeName="FcoDBModel.FcoList">
+              <MappingFragment StoreEntitySet="FcoList">
+                <ScalarProperty Name="uniqueFcoNumber" ColumnName="uniqueFcoNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FCOes">
+            <EntityTypeMapping TypeName="FcoDBModel.FCO">
+              <MappingFragment StoreEntitySet="FCO">
+                <ScalarProperty Name="TotalCount" ColumnName="TotalCount" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="FcoNumber" ColumnName="FcoNumber" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

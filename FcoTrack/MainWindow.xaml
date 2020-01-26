@@ -1,0 +1,30 @@
+﻿<Window x:Class="FcoTrack.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FcoTrack"
+        mc:Ignorable="d"
+        Title="" Height="450" Width="600" ResizeMode="NoResize">
+    <Grid>
+
+        <Label Content="Add UAL table" FontSize="13" HorizontalAlignment="Left" Margin="18,19,0,0" VerticalAlignment="Top" Width="158" Grid.Column="0" Grid.Row="0" Height="26"/>
+        <TextBlock Margin="26,61,0,0" Text="FCO Number" VerticalAlignment="Top" HorizontalAlignment="Left" Height="20" Width="82" Grid.Column="0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="123,61,0,0" Text="FCO" VerticalAlignment="Top" Height="20" Width="26"/>
+        <TextBox Name="textFco"  Height="20" Margin="163,61,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80"/>
+        <TextBlock HorizontalAlignment="Left" Margin="265,61,0,0" Text="Rev" VerticalAlignment="Top" Height="20" Width="26"/>
+        <TextBox Name="text_fco_rev"  Height="20" Margin="305,61,0,0" HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80"/>
+        <Button Name="btnAddFco" Content="Add" HorizontalAlignment="Left" Margin="390,61,0,0" VerticalAlignment="Top" Width="87" Click="btnAddFco_Click" RenderTransformOrigin="-0.215,0.664" Grid.Column="0" Height="20"/>
+        <ListBox Name="list_ImportedFco" ItemsSource="{Binding ImportedFCO}" Margin="26,86,351,181"/>
+        <Border BorderBrush="Gray" BorderThickness="1" Margin="9,10,0,0" HorizontalAlignment="Left" Width="560" Height="240" VerticalAlignment="Top"/>
+
+        <TextBlock Name="labelMsg" HorizontalAlignment="Left" Margin="365,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110" RenderTransformOrigin="2.513,0.288" Grid.Column="1" Height="100"/>
+        <Button Name="btn_DailyReport" Content="Daily Report" HorizontalAlignment="Left" Margin="253,117,0,0" VerticalAlignment="Top" Width="87" Click="btn_DailyReport_Click" Grid.Column="1" Height="20"/>
+        <Button Name="btn_WeeklyReport" Content="Weekly Report" HorizontalAlignment="Left" Margin="253,171,0,0" VerticalAlignment="Top" Width="87" Click="btn_WeeklyReport_Click" Grid.Column="1" Height="20"/>
+
+        <Button Name="btn_ExportLog" Content="Export Log" HorizontalAlignment="Left" Margin="253,300,0,0" VerticalAlignment="Top" Width="87" Click="btn_ExportLog_Click"  Height="20"/>
+        <TextBlock Name ="label_LogPath" HorizontalAlignment="Left" Text="Export Log To" Margin="26,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="212"  Height="16"/>
+        <TextBox Name="textLogPath" IsEnabled="False" HorizontalAlignment="Left" Margin="26,300,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="-0.712,0.126" Width="212" Height="18"/>
+        <Border BorderBrush="Gray" BorderThickness="1" HorizontalAlignment="Left" Margin="9,262,0,39" Width="560" Grid.RowSpan="2"/>
+    </Grid>
+</Window>
